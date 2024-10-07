@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net472</TargetFramework>
+		<!--<UseWindowsForms>true</UseWindowsForms>-->
+	</PropertyGroup>
+
+	<ItemGroup>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="log4net" Version="2.0.14" />
+		<PackageReference Include="newtonsoft.json" Version="13.0.3" />
+	</ItemGroup>
+
+</Project>

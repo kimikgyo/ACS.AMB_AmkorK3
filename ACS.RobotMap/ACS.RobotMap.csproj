@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net472</TargetFramework>
+		<UseWindowsForms>true</UseWindowsForms>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Dapper" Version="2.1.15" />
+	</ItemGroup>
+
+	<ItemGroup>
+
+		<ProjectReference Include="..\ACS.Common\ACS.Common.csproj" />
+		<ProjectReference Include="..\ACS.Data\ACS.Data.csproj" />
+		<ProjectReference Include="..\ACS.RobotApi\ACS.RobotApi.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="MapUserControls\UCMapView.cs">
+	    <SubType>UserControl</SubType>
+	  </Compile>
+	  <Compile Update="MapUserControls\UCSettingView.cs">
+	    <SubType>UserControl</SubType>
+	  </Compile>
+	</ItemGroup>
+
+</Project>

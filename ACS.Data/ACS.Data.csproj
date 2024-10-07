@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net472</TargetFramework>
+		<UseWindowsForms>true</UseWindowsForms>
+		<DefineConstants>LOCALDB</DefineConstants>
+	</PropertyGroup>
+
+	<ItemGroup>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Dapper" Version="2.1.15" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\ACS.Common\ACS.Common.csproj" />
+	</ItemGroup>
+
+</Project>

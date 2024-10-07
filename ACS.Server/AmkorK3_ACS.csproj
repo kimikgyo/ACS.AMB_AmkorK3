@@ -1,0 +1,718 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CB8B253F-0FA5-4553-8766-8091673FC32D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>INA_ACS_Server</RootNamespace>
+    <AssemblyName>INA_ACS_Server</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>게시\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;MIRDEMOx; LOCALDB; DBCALL; TESTDBx; AMT_TESTx</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ACS.Server.Charts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ACS.Server.Charts\bin\Debug\net472\ACS.Server.Charts.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>Assembly\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>Assembly\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.1.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.Desktop.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Drawing.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v24.1.Core, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v24.1.Core, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="log4net, Version=2.0.17.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.17\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MailKitLite">
+      <HintPath>Assembly\MailKitLite\MailKitLite.dll</HintPath>
+    </Reference>
+    <Reference Include="MimeKitLite">
+      <HintPath>Assembly\MailKitLite\MimeKitLite.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Assembly\MailKitLite\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Assembly\MailKitLite\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Assembly\MailKitLite\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Assembly\MailKitLite\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Assembly\MailKitLite\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Custom Controls\RJRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Extensions\DataMapperExtension.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm_ApiClients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm_PublicVar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Broadcast\Email.cs" />
+    <Compile Include="Services\Broadcast\WirelessSensorRS485.cs" />
+    <Compile Include="Services\Queue\JobCommandQueue.cs" />
+    <Compile Include="Services\Queue\PopCallMessageQueue.cs" />
+    <Compile Include="Services\Queue\UiLogMessageQueue.cs" />
+    <Compile Include="Services\RobotAPI\ChargingControl.cs" />
+    <Compile Include="Services\RobotAPI\AMB\ElevatorControl.cs" />
+    <Compile Include="Services\RobotAPI\AMB\EmailControl.cs" />
+    <Compile Include="Services\RobotAPI\JobControl.cs" />
+    <Compile Include="Services\RobotAPI\JobControl_Base.cs" />
+    <Compile Include="Services\RobotAPI\JobPostControl.cs" />
+    <Compile Include="Services\RobotAPI\MainLoop.cs" />
+    <Compile Include="Services\RobotAPI\AMB\MissionControl.cs" />
+    <Compile Include="Services\RobotAPI\RegisterSyncControl.cs" />
+    <Compile Include="Services\RobotAPI\RobotErrorControl.cs" />
+    <Compile Include="Services\RobotAPI\RobotSelectControl.cs" />
+    <Compile Include="Services\RobotAPI\SubFunctions.cs" />
+    <Compile Include="Services\RobotAPI\WaitingControl.cs" />
+    <Compile Include="Views\Hiistroy\ErrorHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Hiistroy\ErrorHistory.designer.cs">
+      <DependentUpon>ErrorHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Hiistroy\HistoryScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Hiistroy\HistoryScreen.designer.cs">
+      <DependentUpon>HistoryScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Hiistroy\JobHistoryScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Hiistroy\JobHistoryScreen.designer.cs">
+      <DependentUpon>JobHistoryScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Monitoring\AcsLogViewerScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Monitoring\AcsLogViewerScreen.designer.cs">
+      <DependentUpon>AcsLogViewerScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Monitoring\AutoScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Monitoring\AutoScreen.designer.cs">
+      <DependentUpon>AutoScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Monitoring\MapMonitoring.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Monitoring\MapMonitoring.designer.cs">
+      <DependentUpon>MapMonitoring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\ChargeMissionSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\ChargeMissionSelectForm.designer.cs">
+      <DependentUpon>ChargeMissionSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\ElevatorModeSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\ElevatorModeSelectForm.designer.cs">
+      <DependentUpon>ElevatorModeSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\ErrorMessagePopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\ErrorMessagePopupForm.designer.cs">
+      <DependentUpon>ErrorMessagePopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\ErrorMissionSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\ErrorMissionSelectForm.designer.cs">
+      <DependentUpon>ErrorMissionSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\FloorMapIdSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\FloorMapIdSelectForm.designer.cs">
+      <DependentUpon>FloorMapIdSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\GroupSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\GroupSelectForm.designer.cs">
+      <DependentUpon>GroupSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\InputTextBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\InputTextBoxForm.designer.cs">
+      <DependentUpon>InputTextBoxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\IP_AddressBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\IP_AddressBoard.designer.cs">
+      <DependentUpon>IP_AddressBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\ItemQtyEditPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\ItemQtyEditPopupForm.designer.cs">
+      <DependentUpon>ItemQtyEditPopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\JobSignalSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\JobSignalSelectForm.designer.cs">
+      <DependentUpon>JobSignalSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\LoginForm.designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\LoginKeypad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\LoginKeypad.designer.cs">
+      <DependentUpon>LoginKeypad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\MiR_Error_PopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\MiR_Error_PopupForm.designer.cs">
+      <DependentUpon>MiR_Error_PopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\MissionGroupSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\MissionGroupSelectForm.designer.cs">
+      <DependentUpon>MissionGroupSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\MissionSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\MissionSelectForm.designer.cs">
+      <DependentUpon>MissionSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\MsgPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\MsgPopupForm.designer.cs">
+      <DependentUpon>MsgPopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\NumPadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\NumPadForm.designer.cs">
+      <DependentUpon>NumPadForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\PasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\PasswordForm.designer.cs">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\DestFloorSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\DestFloorSelectForm.designer.cs">
+      <DependentUpon>DestFloorSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\PositionZoneSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\PositionZoneSelectForm.designer.cs">
+      <DependentUpon>PositionZoneSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\ProductRegistarNoSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\ProductRegistarNoSelectForm.designer.cs">
+      <DependentUpon>ProductRegistarNoSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\RobotNameSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\RobotNameSelectForm.designer.cs">
+      <DependentUpon>RobotNameSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\TypeSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\TypeSelectForm.designer.cs">
+      <DependentUpon>TypeSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\UserNumberForm..cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\UserNumberForm..designer.cs">
+      <DependentUpon>UserNumberForm..cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\UseSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\UseSelectForm.designer.cs">
+      <DependentUpon>UseSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\VirtualHeyBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\VirtualHeyBoard.designer.cs">
+      <DependentUpon>VirtualHeyBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\WaitMissionSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Popups\WaitMissionSelectForm.designer.cs">
+      <DependentUpon>WaitMissionSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\System\ChargeMissionScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\System\ChargeMissionScreen.designer.cs">
+      <DependentUpon>ChargeMissionScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\System\ElevatorScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\System\ElevatorScreen.designer.cs">
+      <DependentUpon>ElevatorScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\System\JobConfigScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\System\JobConfigScreen.designer.cs">
+      <DependentUpon>JobConfigScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\System\PositionScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\System\PositionScreen.designer.cs">
+      <DependentUpon>PositionScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\System\RobotControlScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\System\RobotControlScreen.designer.cs">
+      <DependentUpon>RobotControlScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\System\RobotRegisterSyncScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\System\RobotRegisterSyncScreen.designer.cs">
+      <DependentUpon>RobotRegisterSyncScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\System\SystemScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\System\SystemScreen.designer.cs">
+      <DependentUpon>SystemScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\System\UserDataScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\System\UserDataScreen.designer.cs">
+      <DependentUpon>UserDataScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\System\WaitMissionScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\System\WaitMissionScreen.designer.cs">
+      <DependentUpon>WaitMissionScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TestForm.designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\Helper.cs" />
+    <Compile Include="Utilities\ImageTransparency.cs" />
+    <Compile Include="Utilities\TcpMonitoring.cs" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Views\Hiistroy\ErrorHistory.resx">
+      <DependentUpon>ErrorHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Hiistroy\HistoryScreen.resx">
+      <DependentUpon>HistoryScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Hiistroy\JobHistoryScreen.resx">
+      <DependentUpon>JobHistoryScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Monitoring\AcsLogViewerScreen.resx">
+      <DependentUpon>AcsLogViewerScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Monitoring\AutoScreen.resx">
+      <DependentUpon>AutoScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Monitoring\MapMonitoring.resx">
+      <DependentUpon>MapMonitoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\ChargeMissionSelectForm.resx">
+      <DependentUpon>ChargeMissionSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\ElevatorModeSelectForm.resx">
+      <DependentUpon>ElevatorModeSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\ErrorMessagePopupForm.resx">
+      <DependentUpon>ErrorMessagePopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\ErrorMissionSelectForm.resx">
+      <DependentUpon>ErrorMissionSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\FloorMapIdSelectForm.resx">
+      <DependentUpon>FloorMapIdSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\GroupSelectForm.resx">
+      <DependentUpon>GroupSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\InputTextBoxForm.resx">
+      <DependentUpon>InputTextBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\IP_AddressBoard.resx">
+      <DependentUpon>IP_AddressBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\ItemQtyEditPopupForm.resx">
+      <DependentUpon>ItemQtyEditPopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\JobSignalSelectForm.resx">
+      <DependentUpon>JobSignalSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\LoginKeypad.resx">
+      <DependentUpon>LoginKeypad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\MiR_Error_PopupForm.resx">
+      <DependentUpon>MiR_Error_PopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\MissionGroupSelectForm.resx">
+      <DependentUpon>MissionGroupSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\MissionSelectForm.resx">
+      <DependentUpon>MissionSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\MsgPopupForm.resx">
+      <DependentUpon>MsgPopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\NumPadForm.resx">
+      <DependentUpon>NumPadForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\PasswordForm.resx">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\DestFloorSelectForm.resx">
+      <DependentUpon>DestFloorSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\PositionZoneSelectForm.resx">
+      <DependentUpon>PositionZoneSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\ProductRegistarNoSelectForm.resx">
+      <DependentUpon>ProductRegistarNoSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\RobotNameSelectForm.resx">
+      <DependentUpon>RobotNameSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\TypeSelectForm.resx">
+      <DependentUpon>TypeSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\UserNumberForm..resx">
+      <DependentUpon>UserNumberForm..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\UseSelectForm.resx">
+      <DependentUpon>UseSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\VirtualHeyBoard.resx">
+      <DependentUpon>VirtualHeyBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Popups\WaitMissionSelectForm.resx">
+      <DependentUpon>WaitMissionSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\System\ChargeMissionScreen.resx">
+      <DependentUpon>ChargeMissionScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\System\ElevatorScreen.resx">
+      <DependentUpon>ElevatorScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\System\JobConfigScreen.resx">
+      <DependentUpon>JobConfigScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\System\PositionScreen.resx">
+      <DependentUpon>PositionScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\System\RobotControlScreen.resx">
+      <DependentUpon>RobotControlScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\System\RobotRegisterSyncScreen.resx">
+      <DependentUpon>RobotRegisterSyncScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\System\SystemScreen.resx">
+      <DependentUpon>SystemScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\System\UserDataScreen.resx">
+      <DependentUpon>UserDataScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\System\WaitMissionScreen.resx">
+      <DependentUpon>WaitMissionScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Config\log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\INA_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\70_Auto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\70_Data.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\70_Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\70_Find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\70_Manual.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\70_System.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\70_Diagnosis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\70_Clear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\60_Down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\60_Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\BuzzerStop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Reset.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\20_GrayLamp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\20_GreenLamp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\48_Cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\48_Modify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\48_Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\70_User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\70_Alarm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\70_Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\60_connect.png" />
+    <None Include="Image\60_disconnect.png" />
+    <None Include="Image\layout.png" />
+    <None Include="Image\map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2%28x86 및 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ACS.Common\ACS.Common.csproj">
+      <Project>{be92662c-b7c7-4903-ae9c-57f8cf39741f}</Project>
+      <Name>ACS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ACS.Data\ACS.Data.csproj">
+      <Project>{cbe68ced-1d17-45dc-8788-6a6e9ea1297a}</Project>
+      <Name>ACS.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ACS.RobotApi\ACS.RobotApi.csproj">
+      <Project>{a5166047-bd34-4eb7-960e-5c3eff9c5a4c}</Project>
+      <Name>ACS.RobotApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ACS.RobotMap\ACS.RobotMap.csproj">
+      <Project>{0f8fe84c-6b6d-4e7c-80d1-5940380ca587}</Project>
+      <Name>ACS.RobotMap</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Monitoring_Icon.ico" />
+    <None Include="Resources\Elevator_Close.png" />
+    <None Include="Resources\Elevator_Open.png" />
+    <None Include="Resources\Floor_1.png" />
+    <None Include="Resources\Floor_2.png" />
+    <None Include="Resources\Floor_3.png" />
+    <None Include="Resources\Floor_B1.png" />
+    <None Include="Resources\Login_background.png" />
+    <Content Include="_DB\RobotAPI%282024.08.28%29.sql" />
+    <Content Include="_DB\RobotAPI%282024.09.05%29.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /y /d  "$(ProjectDir)Assembly\TowerLamp\*.dll" "$(ProjectDir)$(OutDir)"
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
