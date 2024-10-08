@@ -31,7 +31,7 @@ namespace INA_ACS_Server
 
             var activeRobotList = uow.Robots.GetAll().Where(r => r.ConnectState 
                                          && r.FleetState != FleetState.None            //MiR 전원이 켜져있을경우
-                                         && r.FleetState != FleetState.unavailable    //MiR 전원이 켜져있을경우
+                                         && r.FleetState != FleetState.unavailable     //MiR 전원이 켜져있을경우
                                          && !string.IsNullOrWhiteSpace(r.RobotName)    //로봇상태값과 이름이있을경우
                                          && !string.IsNullOrWhiteSpace(r.StateText)    //로봇상태값과 이름이있을경우
                                          && r.ACSRobotGroup != "None"                  //로봇이 그룹이 설정되어있는것
