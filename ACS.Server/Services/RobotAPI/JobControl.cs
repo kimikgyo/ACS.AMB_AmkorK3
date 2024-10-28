@@ -139,24 +139,43 @@ namespace INA_ACS_Server
                 main.LogExceptionMessage(ex);
             }
         }
+        /// <summary>
+        /// CallName[출발지_목적지] JobADD
+        /// </summary>
+        /// <param name="CallName"></param> 출발지_목적지
+        /// <param name="robotName"></param> Robot 지정 경우 Robot 이름
+        private void CallNameJobAdd(string CallName, string robotName = null)
+        {
+            var jobConfig = FindJobConfig_By_CallName(CallName);
+            if (jobConfig != null)
+            {
+                var job = FindJob_By_CallName(jobConfig.CallName);
+                if (job == null)
+                {
+                    JobCommandQueue.Enqueue(new JobCommand { Code = JobCommandCode.ADD, Text = jobConfig.CallName, Extra4 = robotName, Extra5 = jobConfig.JobPriority });
+                }
+            }
+        }
+
 
         /// <summary>
-        /// Sub Job 추가
+        /// 목적지 명칭으로 JobAdd
         /// </summary>
-        /// <param name="name"></param>
-        private void JobAdd(string name)
+        /// <param name="name"></param> 목적지 이름
+        /// <param name="robotName"></param> Robot 지정경우 Robot 이름
+        private void EndZoneJobAdd(string EndZonename, string robotName = null)
         {
             string floorName = uow.FloorMapIDConfigs.GetAll().Select(f => f.FloorName).FirstOrDefault();
             if (floorName != null)
             {
-                string displayname = $"{floorName}{name}";
+                string displayname = $"{floorName}{EndZonename}";
                 var jobConfig = FindJobConfig_By_EndPosName(displayname);
                 if (jobConfig != null)
                 {
                     var job = FindJob_By_CallName(jobConfig.CallName);
                     if (job == null)
                     {
-                        JobCommandQueue.Enqueue(new JobCommand { Code = JobCommandCode.ADD, Text = jobConfig.CallName, Extra5 = jobConfig.JobPriority });
+                        JobCommandQueue.Enqueue(new JobCommand { Code = JobCommandCode.ADD, Text = jobConfig.CallName, Extra4 = robotName, Extra5 = jobConfig.JobPriority });
                     }
                 }
             }
@@ -246,6 +265,15 @@ namespace INA_ACS_Server
             return uow.JobConfigs.Find(j => j.JobConfigUse == "Use" && j.CallName.EndsWith(endPosName)).FirstOrDefault();
         }
 
+        /// <summary>
+        /// CallName 으로 설정되어 있는 JobConfig 찾기 
+        /// </summary>
+        /// <param name="CallName"></param>
+        /// <returns></returns>
+        private JobConfigModel FindJobConfig_By_CallName(string CallName)
+        {
+            return uow.JobConfigs.Find(j => j.JobConfigUse == "Use" && j.CallName.EndsWith(CallName)).FirstOrDefault();
+        }
 
         private bool JobMissionIsDone(Job job, int missionNo)
         {

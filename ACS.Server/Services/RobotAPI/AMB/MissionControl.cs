@@ -15,30 +15,42 @@ namespace INA_ACS_Server
             {
                 //차량들 비교해서 가장 가까운 차량 찾기
                 //string RobotName = CloseRobot(MissionsSpecifics.CallName);
+
+
                 string RobotName = RobotClose(MissionsSpecifics.CallName);
 
                 if (!string.IsNullOrEmpty(RobotName) && RobotName != "RobotCall")
                 {
-                    JobCommand command = new JobCommand();
-                    command.Code = JobCommandCode.ADD;
-                    command.Extra1 = 0;
-                    command.Extra2 = null;
-                    command.Extra3 = 0;
-                    command.Extra4 = RobotName;
-                    command.Extra5 = 0;
-                    command.Text = MissionsSpecifics.CallName;
 
-                    JobCommandQueue.Enqueue(command);
+                    CallNameJobAdd(MissionsSpecifics.CallName, RobotName);
+
+                    //JobCommand command = new JobCommand();
+                    //command.Code = JobCommandCode.ADD;
+                    //command.Extra1 = 0;
+                    //command.Extra2 = null;
+                    //command.Extra3 = 0;
+                    //command.Extra4 = RobotName;
+                    //command.Extra5 = 0;
+                    //command.Text = MissionsSpecifics.CallName;
+
+                    //JobCommandQueue.Enqueue(command);
 
                     var Robot = uow.Robots.GetAll().FirstOrDefault(x => x.RobotName == RobotName);
 
-                    MissionsSpecific missionsSpecific = new MissionsSpecific();
-                    missionsSpecific.No = MissionsSpecifics.No;
-                    missionsSpecific.RobotName = RobotName;
-                    missionsSpecific.RobotAlias = Robot.RobotAlias;
-                    missionsSpecific.CallState = Robot.StateText;
+                    // MissionsSpecific missionsSpecific = new MissionsSpecific();
+                    // missionsSpecific.No = MissionsSpecifics.No;
+                    //missionsSpecific.RobotName = RobotName;
+                    //missionsSpecific.RobotAlias = Robot.RobotAlias;
+                    //missionsSpecific.CallState = Robot.StateText;
 
-                    uow.MissionsSpecific.Update(missionsSpecific);
+                    //uow.MissionsSpecific.Update(missionsSpecific);
+
+                    MissionsSpecifics.RobotName = RobotName;
+                    MissionsSpecifics.RobotAlias = Robot.RobotAlias;
+                    MissionsSpecifics.CallState = Robot.StateText;
+                    uow.MissionsSpecific.Update(MissionsSpecifics);
+
+
                 }
                 else if (RobotName == "RobotCall" && MissionsSpecifics.Move_CallName != "RobotCall")
                 {
@@ -82,14 +94,15 @@ namespace INA_ACS_Server
             }
             else
             {
+
                 var Missions = uow.MissionsSpecific.GetAll(0).Where(x => x.Cancel == "cancel");
 
                 foreach (var Mission in Missions)
                 {
-                    MissionsSpecific missionsSpecific = new MissionsSpecific();
-                    missionsSpecific.No = Mission.No;
+                    //MissionsSpecific missionsSpecific = new MissionsSpecific();
+                    //missionsSpecific.No = Mission.No;
 
-                    uow.MissionsSpecific.Remove(missionsSpecific);
+                    uow.MissionsSpecific.Remove(Mission);
                 }
             }
         }
@@ -1171,7 +1184,7 @@ namespace INA_ACS_Server
 
             PathDatas.Add(PathFloor.지상2층, paths_2F);
         }
-
+        
 
         Dictionary<PathFloor, List<PathCoordinate>> PathCoordinateDatas = new Dictionary<PathFloor, List<PathCoordinate>>();
         /// <summary>
